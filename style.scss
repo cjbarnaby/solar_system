@@ -1,4 +1,6 @@
-$size: 100px;
+$earth_radius: 1px;
+$astronomical_unit: 10px;
+
 
 body {
   margin: 0;
@@ -13,8 +15,8 @@ body {
 
 .system {
   background-color: darkgrey;
-  width: 500px;
-  height: 500px;
+  width: 1000px;
+  height: 1000px;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -23,8 +25,8 @@ body {
 }
 
 .sun {
-  width: $size;
-  height: $size;
+  width: $earth_radius * 109;
+  height: $earth_radius * 109;
   background-color: white;
   border-radius: 50%;
   position: absolute;
