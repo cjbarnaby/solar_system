@@ -1,5 +1,76 @@
-$earth_radius: 1px;
-$astronomical_unit: 10px;
+$earth_radius: 20px;
+$astronomical_unit: 30px;
+$rotation_multiplier: 10s; // time per rotation of earth.
+$orbit_multiplier: 0.1s;
+
+
+// distance from sun in astronomical units
+$distances: (
+  "mercury": 0.39,
+  "venus": 0.72,
+  "earth": 1.00,
+  "mars": 1.50,
+  "jupiter": 5.20,
+  "saturn": 9.50,
+  "uranus": 19.20,
+  "neptune": 30.10,
+  "pluto": 39.50
+);
+
+// radius of body (in earth radii)
+$radii: (
+  "mercury": 0.38,
+  "venus": 0.95,
+  "earth": 1.00,
+  "mars": 0.53,
+  "jupiter": 11.00,
+  "saturn": 9.00,
+  "uranus": 4.00,
+  "neptune": 4.00,
+  "pluto": 0.18
+);
+
+// time taken to complete one revolution around own axis (in earth days)
+$rotation_periods: (
+  "mercury": 58.80,
+  "venus": 244.00,  //note - negative 244, rotation is retrograde
+  "earth": 1.00,
+  "mars": 1.029,
+  "jupiter": 0.411,
+  "saturn": 0.428,
+  "uranus": 0.748,  //note - negative .748, rotation is retrograde
+  "neptune": 0.802,
+  "pluto": 0.267
+);
+
+// rotations per orbit (in earth days)
+$days_per_year: (
+"mercury":87.97,
+"venus":224.7,
+"earth":365,
+"mars":686.98,
+"jupiter":4332.82,
+"saturn":10755.7,
+"uranus":30687.15,
+"neptune":60190.03,
+"pluto":90553.00
+);
+
+
+// This @each directive achieves the same result as the map interpolation below:
+// animation: (map-get($rotation_periods, "earth") * $rotation_multiplier) linear infinite spin;
+@each $planet, $period in $rotation_periods {
+  .#{$planet} {
+    animation: ($period * $rotation_multiplier) linear infinite spin;
+  }
+}
+
+@each $planet, $days_per_orbit in $days_per_year {
+  .#{$planet}_orbit {
+    animation: ($days_per_orbit * $orbit_multiplier) linear infinite orbit;
+  }
+}
+
 
 
 body {
@@ -11,12 +82,13 @@ body {
   height: 100vh;
   background-color: black;
   position: relative;
+  overflow: hidden;
 }
 
 .system {
   background-color: darkgrey;
-  width: 1000px;
-  height: 1000px;
+  width: $astronomical_unit * 79;
+  height: $astronomical_unit * 79;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -25,12 +97,146 @@ body {
 }
 
 .sun {
-  width: $earth_radius * 109;
-  height: $earth_radius * 109;
+  width: 20px;
+  height: 20px;
   background-color: white;
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.line {
+  width: 1px;
+  height: 50%;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.orbit {
+  border: 1px solid black;
   border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.planet {
+  border-radius: 50%;
+  position: relative;
+  left: 50%;
+}
+
+.mercury_orbit {
+  width: 30px;
+  height: 30px;
+  // animation: 30s linear infinite orbit;
+}
+
+.mercury {
+  width: 10px;
+  height: 10px;
+  background-color: orange;
+}
+
+.venus_orbit {
+  width: 50px;
+  height: 50px;
+  // animation: 60s linear infinite orbit;
+}
+
+.venus {
+  width: 10px;
+  height: 10px;
+  background-color: yellow;
+}
+
+.earth_orbit {
+  width: 70px;
+  height: 70px;
+  // animation: 10s linear infinite orbit;
+}
+
+.earth {
+  width: 15px;
+  height: 15px;
+  background-color: lightblue;
+}
+
+.mars_orbit {
+  width: 100px;
+  height: 100px;
+  // animation: 15s linear infinite orbit;
+}
+
+.mars {
+  width: 5px;
+  height: 5px;
+  background-color: red;
+}
+
+.jupiter_orbit {
+  width: 150px;
+  height: 150px;
+  // animation: 20s linear infinite orbit;
+}
+
+.jupiter {
+  width: 40px;
+  height: 40px;
+  background-color: orange;
+}
+
+.saturn_orbit {
+  width: 200px;
+  height: 200px;
+  // animation: 25s linear infinite orbit;
+}
+
+.saturn {
+  width: 20px;
+  height: 20px;
+  background-color: green;
+}
+
+.uranus_orbit {
+  width: 250px;
+  height: 250px;
+  // animation: 25s linear infinite orbit;
+}
+
+.uranus {
+  width: 35px;
+  height: 35px;
+  background-color: teal;
+}
+
+.neptune_orbit {
+  width: 350px;
+  height: 350px;
+  // animation: 20s linear infinite orbit;
+}
+
+.neptune {
+  width: 30px;
+  height: 30px;
+  background-color: mediumblue;
+}
+
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  } to {
+    transform: translate(-50%, -50%) rotate(359deg);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  } to {
+    transform: translate(-50%, -50%) rotate(359deg);
+  }
 }
