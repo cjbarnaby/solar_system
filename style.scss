@@ -127,20 +127,10 @@ body {
   left: 50%;
 }
 
-.mercury_orbit {
-  // width: 30px;
-  // height: 30px;
-}
-
 .mercury {
   width: 10px;
   height: 10px;
   background-color: orange;
-}
-
-.venus_orbit {
-  // width: 50px;
-  // height: 50px;
 }
 
 .venus {
@@ -149,20 +139,10 @@ body {
   background-color: yellow;
 }
 
-.earth_orbit {
-  // width: 70px;
-  // height: 70px;
-}
-
 .earth {
   width: 15px;
   height: 15px;
   background-color: lightblue;
-}
-
-.mars_orbit {
-  // width: 100px;
-  // height: 100px;
 }
 
 .mars {
@@ -171,20 +151,10 @@ body {
   background-color: red;
 }
 
-.jupiter_orbit {
-  // width: 150px;
-  // height: 150px;
-}
-
 .jupiter {
   width: 40px;
   height: 40px;
   background-color: orange;
-}
-
-.saturn_orbit {
-  // width: 200px;
-  // height: 200px;
 }
 
 .saturn {
@@ -193,20 +163,10 @@ body {
   background-color: green;
 }
 
-.uranus_orbit {
-  // width: 250px;
-  // height: 250px;
-}
-
 .uranus {
   width: 35px;
   height: 35px;
   background-color: teal;
-}
-
-.neptune_orbit {
-  // width: 350px;
-  // height: 350px;
 }
 
 .neptune {
@@ -220,7 +180,7 @@ body {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   } to {
-    transform: translate(-50%, -50%) rotate(359deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
@@ -228,7 +188,7 @@ body {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   } to {
-    transform: translate(-50%, -50%) rotate(-359deg);
+    transform: translate(-50%, -50%) rotate(-360deg);
   }
 }
 
@@ -236,6 +196,6 @@ body {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   } to {
-    transform: translate(-50%, -50%) rotate(359deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
