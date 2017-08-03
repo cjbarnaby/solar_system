@@ -1,10 +1,10 @@
 $earth_radius: 20px;
-$astronomical_unit: 30px;
+$astronomical_unit: 100px;
 $rotation_multiplier: 10s; // time per rotation of earth.
-$orbit_multiplier: 0.1s;
+$orbit_multiplier: 0.1s;   //
 
 
-// distance from sun in astronomical units
+// distance from sun in astronomical units (1AU = distance from sun to earth)
 $distances: (
   "mercury": 0.39,
   "venus": 0.72,
@@ -45,15 +45,15 @@ $rotation_periods: (
 
 // rotations per orbit (in earth days)
 $days_per_year: (
-"mercury":87.97,
-"venus":224.7,
-"earth":365,
-"mars":686.98,
-"jupiter":4332.82,
-"saturn":10755.7,
-"uranus":30687.15,
-"neptune":60190.03,
-"pluto":90553.00
+  "mercury":87.97,
+  "venus":224.7,
+  "earth":365,
+  "mars":686.98,
+  "jupiter":4332.82,
+  "saturn":10755.7,
+  "uranus":30687.15,
+  "neptune":60190.03,
+  "pluto":90553.00
 );
 
 
@@ -65,8 +65,12 @@ $days_per_year: (
   }
 }
 
+// This @each directive achieves the same result as the map interpolation below:
+// animation: (map-get($days_per_year, "earth") * $orbit_multiplier) linear infinite orbit;
 @each $planet, $days_per_orbit in $days_per_year {
   .#{$planet}_orbit {
+    width: (map-get($distances, $planet) * $astronomical_unit);
+    height: (map-get($distances, $planet) * $astronomical_unit);
     animation: ($days_per_orbit * $orbit_multiplier) linear infinite orbit;
   }
 }
@@ -129,9 +133,8 @@ body {
 }
 
 .mercury_orbit {
-  width: 30px;
-  height: 30px;
-  // animation: 30s linear infinite orbit;
+  // width: 30px;
+  // height: 30px;
 }
 
 .mercury {
@@ -141,9 +144,8 @@ body {
 }
 
 .venus_orbit {
-  width: 50px;
-  height: 50px;
-  // animation: 60s linear infinite orbit;
+  // width: 50px;
+  // height: 50px;
 }
 
 .venus {
@@ -153,9 +155,8 @@ body {
 }
 
 .earth_orbit {
-  width: 70px;
-  height: 70px;
-  // animation: 10s linear infinite orbit;
+  // width: 70px;
+  // height: 70px;
 }
 
 .earth {
@@ -165,9 +166,8 @@ body {
 }
 
 .mars_orbit {
-  width: 100px;
-  height: 100px;
-  // animation: 15s linear infinite orbit;
+  // width: 100px;
+  // height: 100px;
 }
 
 .mars {
@@ -177,9 +177,8 @@ body {
 }
 
 .jupiter_orbit {
-  width: 150px;
-  height: 150px;
-  // animation: 20s linear infinite orbit;
+  // width: 150px;
+  // height: 150px;
 }
 
 .jupiter {
@@ -189,9 +188,8 @@ body {
 }
 
 .saturn_orbit {
-  width: 200px;
-  height: 200px;
-  // animation: 25s linear infinite orbit;
+  // width: 200px;
+  // height: 200px;
 }
 
 .saturn {
@@ -201,9 +199,8 @@ body {
 }
 
 .uranus_orbit {
-  width: 250px;
-  height: 250px;
-  // animation: 25s linear infinite orbit;
+  // width: 250px;
+  // height: 250px;
 }
 
 .uranus {
@@ -213,9 +210,8 @@ body {
 }
 
 .neptune_orbit {
-  width: 350px;
-  height: 350px;
-  // animation: 20s linear infinite orbit;
+  // width: 350px;
+  // height: 350px;
 }
 
 .neptune {
