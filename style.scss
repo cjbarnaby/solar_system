@@ -1,9 +1,7 @@
 $earth_radius: 20px;
 $astronomical_unit: 100px;
-$rotation_multiplier: 10s; // time per rotation of earth.
-$orbit_multiplier: 0.1s;   //
+$time_multiplier: 1s;
 $retrograde_orbits: "venus", "uranus";
-//
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
 $distances: (
@@ -44,7 +42,7 @@ $rotation_periods: (
   "pluto": 0.267
 );
 
-// rotations per orbit (in earth days)
+// rotations per orbit (in earth days).
 $days_per_year: (
   "mercury":87.97,
   "venus":224.7,
@@ -57,21 +55,18 @@ $days_per_year: (
   "pluto":90553.00
 );
 
-// This @each directive achieves the same result as the map interpolation below:
-// animation: (map-get($rotation_periods, "earth") * $rotation_multiplier) linear infinite spin;
+
 @each $planet, $period in $rotation_periods {
   .#{$planet} {
-    animation: ($period * $rotation_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
+    animation: ($period * $time_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
   }
 }
 
-// This @each directive achieves the same result as the map interpolation below:
-// animation: (map-get($days_per_year, "earth") * $orbit_multiplier) linear infinite orbit;
 @each $planet, $days_per_orbit in $days_per_year {
   .#{$planet}_orbit {
     width: (map-get($distances, $planet) * $astronomical_unit);
     height: (map-get($distances, $planet) * $astronomical_unit);
-    animation: ($days_per_orbit * $orbit_multiplier) linear infinite orbit;
+    animation: ($days_per_orbit * $time_multiplier) linear infinite orbit;
   }
 }
 
