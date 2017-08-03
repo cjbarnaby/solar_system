@@ -2,7 +2,7 @@
   animation: 588s linear infinite spin; }
 
 .venus {
-  animation: 2440s linear infinite spin; }
+  animation: 2440s linear infinite retrograde_spin; }
 
 .earth {
   animation: 10s linear infinite spin; }
@@ -17,7 +17,7 @@
   animation: 4.28s linear infinite spin; }
 
 .uranus {
-  animation: 7.48s linear infinite spin; }
+  animation: 7.48s linear infinite retrograde_spin; }
 
 .neptune {
   animation: 8.02s linear infinite spin; }
@@ -164,6 +164,11 @@ body {
     transform: translate(-50%, -50%) rotate(0deg); }
   to {
     transform: translate(-50%, -50%) rotate(359deg); } }
+@keyframes retrograde_spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg); }
+  to {
+    transform: translate(-50%, -50%) rotate(-359deg); } }
 @keyframes orbit {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }

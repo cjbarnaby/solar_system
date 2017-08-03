@@ -2,7 +2,8 @@ $earth_radius: 20px;
 $astronomical_unit: 100px;
 $rotation_multiplier: 10s; // time per rotation of earth.
 $orbit_multiplier: 0.1s;   //
-
+$retrograde_orbits: "venus", "uranus";
+//
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
 $distances: (
@@ -56,12 +57,11 @@ $days_per_year: (
   "pluto":90553.00
 );
 
-
 // This @each directive achieves the same result as the map interpolation below:
 // animation: (map-get($rotation_periods, "earth") * $rotation_multiplier) linear infinite spin;
 @each $planet, $period in $rotation_periods {
   .#{$planet} {
-    animation: ($period * $rotation_multiplier) linear infinite spin;
+    animation: ($period * $rotation_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
   }
 }
 
@@ -226,6 +226,14 @@ body {
     transform: translate(-50%, -50%) rotate(0deg);
   } to {
     transform: translate(-50%, -50%) rotate(359deg);
+  }
+}
+
+@keyframes retrograde_spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  } to {
+    transform: translate(-50%, -50%) rotate(-359deg);
   }
 }
 
