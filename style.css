@@ -1,38 +1,65 @@
 .mercury .planet {
-  animation: 588ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 3.8px;
+  height: 3.8px;
+  animation: 58.8s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: palegoldenrod; }
 
 .venus .planet {
-  animation: 2440ms linear infinite retrograde_spin;
-  transform: translate(-50%, -50%); }
+  width: 9.5px;
+  height: 9.5px;
+  animation: 244s linear infinite retrograde_spin;
+  transform: translate(-50%, -50%);
+  background-color: goldenrod; }
 
 .earth .planet {
-  animation: 10ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 10px;
+  height: 10px;
+  animation: 1s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: lightblue; }
 
 .mars .planet {
-  animation: 10.29ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 5.3px;
+  height: 5.3px;
+  animation: 1.029s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: darkred; }
 
 .jupiter .planet {
-  animation: 4.11ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 110px;
+  height: 110px;
+  animation: 0.411s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: orange; }
 
 .saturn .planet {
-  animation: 4.28ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 90px;
+  height: 90px;
+  animation: 0.428s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: sienna; }
 
 .uranus .planet {
-  animation: 7.48ms linear infinite retrograde_spin;
-  transform: translate(-50%, -50%); }
+  width: 40px;
+  height: 40px;
+  animation: 0.748s linear infinite retrograde_spin;
+  transform: translate(-50%, -50%);
+  background-color: aqua; }
 
 .neptune .planet {
-  animation: 8.02ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 40px;
+  height: 40px;
+  animation: 0.802s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: blue; }
 
 .pluto .planet {
-  animation: 2.67ms linear infinite spin;
-  transform: translate(-50%, -50%); }
+  width: 1.8px;
+  height: 1.8px;
+  animation: 0.267s linear infinite spin;
+  transform: translate(-50%, -50%);
+  background-color: grey; }
 
 .mercury {
   position: absolute;
@@ -45,7 +72,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 879.7ms linear infinite mercury-orbit;
+    animation: 87.97s linear infinite mercury-orbit;
     top: 19.5px; }
 @keyframes mercury-orbit {
   from {
@@ -63,7 +90,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 2247ms linear infinite venus-orbit;
+    animation: 224.7s linear infinite venus-orbit;
     top: 36px; }
 @keyframes venus-orbit {
   from {
@@ -81,7 +108,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 3650ms linear infinite earth-orbit;
+    animation: 365s linear infinite earth-orbit;
     top: 50px; }
 @keyframes earth-orbit {
   from {
@@ -99,7 +126,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 6869.8ms linear infinite mars-orbit;
+    animation: 686.98s linear infinite mars-orbit;
     top: 75px; }
 @keyframes mars-orbit {
   from {
@@ -117,7 +144,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 43328.2ms linear infinite jupiter-orbit;
+    animation: 4332.82s linear infinite jupiter-orbit;
     top: 260px; }
 @keyframes jupiter-orbit {
   from {
@@ -135,7 +162,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 107557ms linear infinite saturn-orbit;
+    animation: 10755.7s linear infinite saturn-orbit;
     top: 475px; }
 @keyframes saturn-orbit {
   from {
@@ -153,7 +180,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 306871.5ms linear infinite uranus-orbit;
+    animation: 30687.15s linear infinite uranus-orbit;
     top: 960px; }
 @keyframes uranus-orbit {
   from {
@@ -171,7 +198,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 601900.3ms linear infinite neptune-orbit;
+    animation: 60190.03s linear infinite neptune-orbit;
     top: 1505px; }
 @keyframes neptune-orbit {
   from {
@@ -189,7 +216,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 905530ms linear infinite pluto-orbit;
+    animation: 90553s linear infinite pluto-orbit;
     top: 1975px; }
 @keyframes pluto-orbit {
   from {
@@ -208,7 +235,7 @@ body {
   overflow: hidden; }
 
 .system {
-  background-color: darkgrey;
+  background-color: black;
   width: 7900px;
   height: 7900px;
   border-radius: 50%;
@@ -234,7 +261,7 @@ body {
   margin: 0 auto; }
 
 .orbit {
-  border: 1px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   position: absolute;
   height: 100%;
@@ -242,47 +269,31 @@ body {
 
 .planet {
   border-radius: 50%;
-  position: relative;
+  position: absolute;
   left: 50%; }
 
 .mercury .planet {
-  width: 10px;
-  height: 10px;
   background-color: orange; }
 
 .venus .planet {
-  width: 10px;
-  height: 10px;
   background-color: yellow; }
 
 .earth .planet {
-  width: 15px;
-  height: 15px;
   background-color: lightblue; }
 
 .mars .planet {
-  width: 5px;
-  height: 5px;
   background-color: red; }
 
 .jupiter .planet {
-  width: 40px;
-  height: 40px;
   background-color: orange; }
 
 .saturn .planet {
-  width: 20px;
-  height: 20px;
   background-color: green; }
 
 .uranus .planet {
-  width: 35px;
-  height: 35px;
   background-color: teal; }
 
 .neptune .planet {
-  width: 30px;
-  height: 30px;
   background-color: mediumblue; }
 
 @keyframes spin {

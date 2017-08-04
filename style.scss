@@ -1,6 +1,6 @@
-$earth_radius: 20px;
+$earth_radius: 10px;
 $astronomical_unit: 100px;
-$time_multiplier: 10ms;
+$time_multiplier: 1s;
 $retrograde_orbits: "venus", "uranus";
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
@@ -55,11 +55,25 @@ $days_per_year: (
   "pluto":90553.00
 );
 
+$colors: (
+  "mercury": palegoldenrod,
+  "venus": goldenrod,
+  "earth": lightblue,
+  "mars": darkred,
+  "jupiter": orange,
+  "saturn": sienna,
+  "uranus": aqua,
+  "neptune": blue,
+  "pluto": grey
+);
 
 @each $planet, $period in $rotation_periods {
   .#{$planet} .planet {
+    width: (map-get($radii, #{$planet}) * $earth_radius);
+    height: (map-get($radii, #{$planet}) * $earth_radius);
     animation: ($period * $time_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
     transform: translate(-50%, -50%);
+    background-color: (map-get($colors, $planet));
   }
 }
 
@@ -71,13 +85,13 @@ $days_per_year: (
     transform: translate(-50%, -50%);
     width: (map-get($distances, $planet) * $astronomical_unit);
     height: (map-get($distances, $planet) * $astronomical_unit);
+
     .planet_container {
       height: 100%;
       width: 100%;
       position: absolute;
       animation: ($days_per_orbit * $time_multiplier) linear infinite #{$planet}-orbit;
       top: (map-get($distances, $planet) * $astronomical_unit) / 2;
-
       @keyframes #{$planet}-orbit {
         from {
           transform: rotate(0deg) translateX((map-get($distances, $planet) * $astronomical_unit) / 2) rotate(0deg);
@@ -103,7 +117,7 @@ body {
 }
 
 .system {
-  background-color: darkgrey;
+  background-color: black;
   width: $astronomical_unit * 79;
   height: $astronomical_unit * 79;
   border-radius: 50%;
@@ -132,7 +146,7 @@ body {
 }
 
 .orbit {
-  border: 1px solid black;
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 50%;
   position: absolute;
   height: 100%;
@@ -141,55 +155,40 @@ body {
 
 .planet {
   border-radius: 50%;
-  position: relative;
+  position: absolute;
   left: 50%;
+
 }
 
 .mercury .planet {
-  width: 10px;
-  height: 10px;
   background-color: orange;
 }
 
 .venus .planet {
-  width: 10px;
-  height: 10px;
   background-color: yellow;
 }
 
 .earth .planet {
-  width: 15px;
-  height: 15px;
   background-color: lightblue;
 }
 
 .mars .planet {
-  width: 5px;
-  height: 5px;
   background-color: red;
 }
 
 .jupiter .planet {
-  width: 40px;
-  height: 40px;
   background-color: orange;
 }
 
 .saturn .planet {
-  width: 20px;
-  height: 20px;
   background-color: green;
 }
 
 .uranus .planet {
-  width: 35px;
-  height: 35px;
   background-color: teal;
 }
 
 .neptune .planet {
-  width: 30px;
-  height: 30px;
   background-color: mediumblue;
 }
 
