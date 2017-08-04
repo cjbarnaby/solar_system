@@ -1,6 +1,6 @@
-$earth_radius: 10px;
-$astronomical_unit: 100px;
-$time_multiplier: 100ms;
+$earth_radius: 20px;
+$astronomical_unit: 200px;  // distance from sun to earth (AU)
+$time_multiplier: 1s; // time per earth day
 $retrograde_orbits: "venus", "uranus";
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
