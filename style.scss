@@ -1,6 +1,6 @@
 $earth_radius: 10px;
 $astronomical_unit: 100px;
-$time_multiplier: 1s;
+$time_multiplier: 100ms;
 $retrograde_orbits: "venus", "uranus";
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
@@ -44,15 +44,15 @@ $rotation_periods: (
 
 // rotations per orbit (in earth days).
 $days_per_year: (
-  "mercury":87.97,
-  "venus":224.7,
-  "earth":365,
-  "mars":686.98,
-  "jupiter":4332.82,
-  "saturn":10755.7,
-  "uranus":30687.15,
-  "neptune":60190.03,
-  "pluto":90553.00
+  "mercury": 87.97,
+  "venus": 224.7,
+  "earth": 365,
+  "mars": 686.98,
+  "jupiter": 4332.82,
+  "saturn": 10755.7,
+  "uranus": 30687.15,
+  "neptune": 60190.03,
+  "pluto": 90553.00
 );
 
 $colors: (
@@ -94,9 +94,23 @@ $colors: (
       top: (map-get($distances, $planet) * $astronomical_unit) / 2;
       @keyframes #{$planet}-orbit {
         from {
-          transform: rotate(0deg) translateX((map-get($distances, $planet) * $astronomical_unit) / 2) rotate(0deg);
+          transform: rotate(0deg) translateX((map-get($distances, #{$planet}) * $astronomical_unit) / 2) rotate(0deg);
         } to {
-          transform: rotate(360deg) translateX((map-get($distances, $planet) * $astronomical_unit) / 2) rotate(-360deg);
+          transform: rotate(360deg) translateX((map-get($distances, #{$planet}) * $astronomical_unit) / 2) rotate(-360deg);
+        }
+      }
+      .planet_shadow {
+        width: (map-get($radii, #{$planet}) * $earth_radius);
+        height: (map-get($radii, #{$planet}) * $earth_radius);
+        box-shadow: inset ((map-get($radii, #{$planet}) * $earth_radius) / -5) 0px 0px 0px #777;
+        opacity: 0.8;
+        animation: ($days_per_orbit * $time_multiplier) linear infinite #{$planet}-shadow;
+        @keyframes #{$planet}-shadow {
+          from {
+            transform: translate(-50%, -50%) rotate(0deg);
+          } to {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
         }
       }
     }
@@ -113,7 +127,7 @@ body {
   height: 100vh;
   background-color: black;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .system {
@@ -153,43 +167,11 @@ body {
   width: 100%;
 }
 
-.planet {
+.planet,.planet_shadow {
   border-radius: 50%;
   position: absolute;
   left: 50%;
 
-}
-
-.mercury .planet {
-  background-color: orange;
-}
-
-.venus .planet {
-  background-color: yellow;
-}
-
-.earth .planet {
-  background-color: lightblue;
-}
-
-.mars .planet {
-  background-color: red;
-}
-
-.jupiter .planet {
-  background-color: orange;
-}
-
-.saturn .planet {
-  background-color: green;
-}
-
-.uranus .planet {
-  background-color: teal;
-}
-
-.neptune .planet {
-  background-color: mediumblue;
 }
 
 
