@@ -1,6 +1,6 @@
 $earth_radius: 20px;
 $astronomical_unit: 100px;
-$time_multiplier: 1s;
+$time_multiplier: 10ms;
 $retrograde_orbits: "venus", "uranus";
 
 // distance from sun in astronomical units (1AU = distance from sun to earth)
@@ -57,19 +57,37 @@ $days_per_year: (
 
 
 @each $planet, $period in $rotation_periods {
-  .#{$planet} {
+  .#{$planet} .planet {
     animation: ($period * $time_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
+    transform: translate(-50%, -50%);
   }
 }
 
 @each $planet, $days_per_orbit in $days_per_year {
-  .#{$planet}_orbit {
+  .#{$planet} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: (map-get($distances, $planet) * $astronomical_unit);
     height: (map-get($distances, $planet) * $astronomical_unit);
-    animation: ($days_per_orbit * $time_multiplier) linear infinite orbit;
+    .planet_container {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      animation: ($days_per_orbit * $time_multiplier) linear infinite #{$planet}-orbit;
+      top: (map-get($distances, $planet) * $astronomical_unit) / 2;
+
+      @keyframes #{$planet}-orbit {
+        from {
+          transform: rotate(0deg) translateX((map-get($distances, $planet) * $astronomical_unit) / 2) rotate(0deg);
+        } to {
+          transform: rotate(360deg) translateX((map-get($distances, $planet) * $astronomical_unit) / 2) rotate(-360deg);
+        }
+      }
+    }
   }
 }
-
 
 
 body {
@@ -117,8 +135,8 @@ body {
   border: 1px solid black;
   border-radius: 50%;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  height: 100%;
+  width: 100%;
 }
 
 .planet {
@@ -127,49 +145,49 @@ body {
   left: 50%;
 }
 
-.mercury {
+.mercury .planet {
   width: 10px;
   height: 10px;
   background-color: orange;
 }
 
-.venus {
+.venus .planet {
   width: 10px;
   height: 10px;
   background-color: yellow;
 }
 
-.earth {
+.earth .planet {
   width: 15px;
   height: 15px;
   background-color: lightblue;
 }
 
-.mars {
+.mars .planet {
   width: 5px;
   height: 5px;
   background-color: red;
 }
 
-.jupiter {
+.jupiter .planet {
   width: 40px;
   height: 40px;
   background-color: orange;
 }
 
-.saturn {
+.saturn .planet {
   width: 20px;
   height: 20px;
   background-color: green;
 }
 
-.uranus {
+.uranus .planet {
   width: 35px;
   height: 35px;
   background-color: teal;
 }
 
-.neptune {
+.neptune .planet {
   width: 30px;
   height: 30px;
   background-color: mediumblue;
@@ -189,13 +207,5 @@ body {
     transform: translate(-50%, -50%) rotate(0deg);
   } to {
     transform: translate(-50%, -50%) rotate(-360deg);
-  }
-}
-
-@keyframes orbit {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  } to {
-    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
