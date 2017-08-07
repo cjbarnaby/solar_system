@@ -1,22 +1,4 @@
-// DO SOMETHING LIKE THIS:
 
-// $planets: (
-//   "mercury": (
-//     "distance": 0.39
-//   ),
-//   "venus": (
-//     "distance": 0.72
-//   ),
-//   "earth": (
-//     "distance": 1.00
-//   )
-// );
-//
-// @each $planet, $data in $planets {
-//   .#{$planet} {
-//     width: map-get(map-get($planets, #{$planet}), "distance");
-//   }
-// }
 
 $bodies: (
   "sun": (
@@ -98,8 +80,23 @@ $bodies: (
   )
 );
 
+// Need to do something along the following lines:
 
-
+// @each $body, $data in $bodies {
+//   .#{$body} {
+//     @if not map-has-key(map-get($bodies, $body), "orbits") {
+//       // is the sun
+//     } @else if map-get(map-get($bodies, $body), "orbits") == "sun"{
+//       // orbits the sun
+//     } @ else {
+//       // orbits a planet
+//     }
+//   }
+// }
+//
+// @function distance($planet) {
+//   @return map-get(map-get($bodies, $planet), "distance");
+// }
 
 $earth_radius: 20px;
 $astronomical_unit: 200px;  // distance from sun to earth (AU)
