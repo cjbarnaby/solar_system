@@ -1,3 +1,106 @@
+// DO SOMETHING LIKE THIS:
+
+// $planets: (
+//   "mercury": (
+//     "distance": 0.39
+//   ),
+//   "venus": (
+//     "distance": 0.72
+//   ),
+//   "earth": (
+//     "distance": 1.00
+//   )
+// );
+//
+// @each $planet, $data in $planets {
+//   .#{$planet} {
+//     width: map-get(map-get($planets, #{$planet}), "distance");
+//   }
+// }
+
+$bodies: (
+  "sun": (
+    "radius": 109.00,
+    "rotation_period": 27.00,
+    "rotation": "prograde"
+  ),
+  "mercury": (
+    "orbits": "sun",
+    "distance": 0.39,
+    "radius": 0.38,
+    "rotation_period": 58.80,
+    "rotation": "prograde",
+    "days_per_year": 87.97,
+    "color": gainsboro
+  ),
+  "venus": (
+    "orbits": "sun",
+    "distance": 0.72,
+    "radius": 0.95,
+    "rotation_period": 244.00, // note - retrograde rotation
+    "rotation": "retrograde",
+    "days_per_year": 224.70,
+    "color": papayawhip
+  ),
+  "earth": (
+    "orbits": "sun",
+    "distance": 1.00,
+    "radius": 1.00,
+    "rotation_period": 1.00,
+    "rotation": "prograde",
+    "days_per_year": 364.25,
+    "color": deepskyblue
+  ),
+  "mars": (
+    "orbits": "sun",
+    "distance": 1.50,
+    "radius": 0.53,
+    "rotation_period": 1.03,
+    "rotation": "prograde",
+    "days_per_year": 686.98,
+    "color": firebrick
+  ),
+  "jupiter": (
+    "orbits": "sun",
+    "distance": 5.20,
+    "radius": 11.00,
+    "rotation_period": 0.411,
+    "rotation": "prograde",
+    "days_per_year": 4332.82,
+    "color": sandybrown
+  ),
+  "saturn": (
+    "orbits": "sun",
+    "distance": 9.50,
+    "radius": 9.00,
+    "rotation_period": 0.428,
+    "rotation": "prograde",
+    "days_per_year": 10755.70,
+    "color": tan
+  ),
+  "uranus": (
+    "orbits": "sun",
+    "distance": 19.20,
+    "radius": 4.00,
+    "rotation_period": 0.748,
+    "rotation": "retrograde",
+    "days_per_year": 30687.15,
+    "color": powderblue
+  ),
+  "neptune": (
+    "orbits": "sun",
+    "distance": 30.10,
+    "radius": 4.00,
+    "rotation_period": 0.802,
+    "rotation": "prograde",
+    "days_per_year": 60190.03,
+    "color": royalblue
+  )
+);
+
+
+
+
 $earth_radius: 20px;
 $astronomical_unit: 200px;  // distance from sun to earth (AU)
 $time_multiplier: 1s; // time per earth day
@@ -42,7 +145,7 @@ $rotation_periods: (
   "pluto": 0.267
 );
 
-// rotations per orbit (in earth days).
+// in earth days
 $days_per_year: (
   "mercury": 87.97,
   "venus": 224.7,
