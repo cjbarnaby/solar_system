@@ -1,4 +1,7 @@
-
+$earth_radius: 20px;
+$astronomical_unit: 150px;  // distance from sun to earth (AU)
+$time_multiplier: 100ms; // time per earth day
+$retrograde_orbits: "venus", "uranus";
 
 $bodies: (
   "sun": (
@@ -8,18 +11,18 @@ $bodies: (
   ),
   "mercury": (
     "orbits": "sun",
-    "distance": 0.39,
-    "radius": 0.38,
-    "rotation_period": 58.80,
+    "distance": 0.39,          // distance from sun in astronomical units (1AU = distance from sun to earth)
+    "radius": 0.38,            // radius of body (in earth radii)
+    "rotation_period": 58.80,  // time taken to complete one revolution around own axis (in earth days)
     "rotation": "prograde",
-    "days_per_year": 87.97,
+    "days_per_year": 87.97,    // days per year in earth days
     "color": gainsboro
   ),
   "venus": (
     "orbits": "sun",
     "distance": 0.72,
     "radius": 0.95,
-    "rotation_period": 244.00, // note - retrograde rotation
+    "rotation_period": 244.00,   // note - retrograde rotation
     "rotation": "retrograde",
     "days_per_year": 224.70,
     "color": papayawhip
@@ -65,7 +68,7 @@ $bodies: (
     "distance": 19.20,
     "radius": 4.00,
     "rotation_period": 0.748,
-    "rotation": "retrograde",
+    "rotation": "retrograde",    // note: retrograde rotation
     "days_per_year": 30687.15,
     "color": powderblue
   ),
@@ -77,135 +80,83 @@ $bodies: (
     "rotation": "prograde",
     "days_per_year": 60190.03,
     "color": royalblue
+  ),
+  "pluto": (
+    "orbits": "sun",
+    "distance": 39.50,
+    "radius": 0.18,
+    "rotation_period": 0.267,
+    "rotation": "prograde",
+    "days_per_year": 90553.00,
+    "color": tan
   )
 );
 
-// Need to do something along the following lines:
-
-// @each $body, $data in $bodies {
-//   .#{$body} {
-//     @if not map-has-key(map-get($bodies, $body), "orbits") {
-//       // is the sun
-//     } @else if map-get(map-get($bodies, $body), "orbits") == "sun"{
-//       // orbits the sun
-//     } @ else {
-//       // orbits a planet
-//     }
-//   }
-// }
-//
-// @function distance($planet) {
-//   @return map-get(map-get($bodies, $planet), "distance");
-// }
-
-$earth_radius: 20px;
-$astronomical_unit: 200px;  // distance from sun to earth (AU)
-$time_multiplier: 1s; // time per earth day
-$retrograde_orbits: "venus", "uranus";
-
-// distance from sun in astronomical units (1AU = distance from sun to earth)
-$distances: (
-  "mercury": 0.39,
-  "venus": 0.72,
-  "earth": 1.00,
-  "mars": 1.50,
-  "jupiter": 5.20,
-  "saturn": 9.50,
-  "uranus": 19.20,
-  "neptune": 30.10,
-  "pluto": 39.50
-);
-
-// radius of body (in earth radii)
-$radii: (
-  "mercury": 0.38,
-  "venus": 0.95,
-  "earth": 1.00,
-  "mars": 0.53,
-  "jupiter": 11.00,
-  "saturn": 9.00,
-  "uranus": 4.00,
-  "neptune": 4.00,
-  "pluto": 0.18
-);
-
-// time taken to complete one revolution around own axis (in earth days)
-$rotation_periods: (
-  "mercury": 58.80,
-  "venus": 244.00,  //note - negative 244, rotation is retrograde
-  "earth": 1.00,
-  "mars": 1.029,
-  "jupiter": 0.411,
-  "saturn": 0.428,
-  "uranus": 0.748,  //note - negative .748, rotation is retrograde
-  "neptune": 0.802,
-  "pluto": 0.267
-);
-
-// in earth days
-$days_per_year: (
-  "mercury": 87.97,
-  "venus": 224.7,
-  "earth": 365,
-  "mars": 686.98,
-  "jupiter": 4332.82,
-  "saturn": 10755.7,
-  "uranus": 30687.15,
-  "neptune": 60190.03,
-  "pluto": 90553.00
-);
-
-$colors: (
-  "mercury": palegoldenrod,
-  "venus": goldenrod,
-  "earth": lightblue,
-  "mars": darkred,
-  "jupiter": orange,
-  "saturn": sienna,
-  "uranus": aqua,
-  "neptune": blue,
-  "pluto": grey
-);
-
-@each $planet, $period in $rotation_periods {
-  .#{$planet} .planet {
-    width: (map-get($radii, #{$planet}) * $earth_radius);
-    height: (map-get($radii, #{$planet}) * $earth_radius);
-    animation: ($period * $time_multiplier) linear infinite if(index($retrograde_orbits, $planet), retrograde_spin, spin);
-    transform: translate(-50%, -50%);
-    background-color: (map-get($colors, #{$planet}));
-  }
+@function days_per_orbit($body) {
+  // Returns earth days per orbit. Used to calculate orbit animation
+  @return map-get(map-get($bodies, $body), "days_per_year") * $time_multiplier;
 }
 
-@each $planet, $days_per_orbit in $days_per_year {
-  .#{$planet} {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: (map-get($distances, $planet) * $astronomical_unit);
-    height: (map-get($distances, $planet) * $astronomical_unit);
+@function orbit_radius($body) {
+  // Returns distance from central body in astronomical units.
+  @return map-get(map-get($bodies, $body), "distance") * $astronomical_unit;
+}
 
-    .planet_container {
-      height: 100%;
-      width: 100%;
+@function body_radius($body) {
+  // Returns radius of body in earth radii.
+  @return map-get(map-get($bodies, $body), "radius") * $earth_radius;
+}
+
+@function color($body) {
+  // Background color for body.
+  @return map-get(map-get($bodies, $body), "color");
+}
+
+@function rotation_period($body) {
+  // Returns speed at which body rotates on own axis in seconds.
+  @return map-get(map-get($bodies, $body), "rotation_period") * $time_multiplier;
+}
+
+@each $body, $data in $bodies {
+  .#{$body} {
+    @if not map-has-key(map-get($bodies, $body), "orbits") {
+      // body is the sun
+    } @else if map-get(map-get($bodies, $body), "orbits") == "sun"{
+      // body orbits the sun
       position: absolute;
-      animation: ($days_per_orbit * $time_multiplier) linear infinite #{$planet}-orbit;
-      top: (map-get($distances, $planet) * $astronomical_unit) / 2;
-      @keyframes #{$planet}-orbit {
-        from {
-          transform: rotate(0deg) translateX((map-get($distances, #{$planet}) * $astronomical_unit) / 2) rotate(0deg);
-        } to {
-          transform: rotate(360deg) translateX((map-get($distances, #{$planet}) * $astronomical_unit) / 2) rotate(-360deg);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: orbit_radius($body);
+      height: orbit_radius($body);
+      .planet {  // eg .earth .planet
+        width: body_radius($body);
+        height: body_radius($body);
+        animation: rotation_period($body) linear infinite if(index($retrograde_orbits, $body), retrograde_spin, spin);
+        transform: translate(-50%, -50%);
+        background-color: color($body);
+      }
+      .planet_container {  //eg .earth .planet_container
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        animation: days_per_orbit($body) linear infinite #{$body}-orbit;
+        top: orbit_radius($body) / 2;
+        @keyframes #{$body}-orbit {
+          from {
+            transform: rotate(0deg) translateX(orbit_radius($body) / 2) rotate(0deg);
+          } to {
+            transform: rotate(360deg) translateX(orbit_radius($body) / 2) rotate(-360deg);
+          }
         }
       }
-      .planet_shadow {
-        width: (map-get($radii, #{$planet}) * $earth_radius);
-        height: (map-get($radii, #{$planet}) * $earth_radius);
-        box-shadow: inset ((map-get($radii, #{$planet}) * $earth_radius) / -4) 0px 0px 0px (map-get($colors, #{planet}));
+      .planet_shadow {   //eg .earth .planet_shadow
+        width: body_radius($body);
+        height: body_radius($body);
+        box-shadow: inset (body_radius($body) / -4) 0px 0px 0px;
         opacity: 0.5;
-        animation: ($days_per_orbit * $time_multiplier) linear infinite #{$planet}-shadow;
-        @keyframes #{$planet}-shadow {
+        animation: days_per_orbit($body) linear infinite #{$body}-shadow;
+        @keyframes #{$body}-shadow {
           from {
             transform: translate(-50%, -50%) rotate(0deg);
           } to {
@@ -213,6 +164,8 @@ $colors: (
           }
         }
       }
+    } @else {
+      // body orbits a planet
     }
   }
 }
@@ -226,8 +179,6 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: black;
-  // position: relative;
-  // overflow: hidden;
 }
 
 .system {
@@ -272,7 +223,6 @@ body {
   border-radius: 50%;
   position: absolute;
   left: 50%;
-
 }
 
 
