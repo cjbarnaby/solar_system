@@ -313,6 +313,32 @@
     transform: translate(-50%, -50%) rotate(0deg); }
   to {
     transform: translate(-50%, -50%) rotate(360deg); } }
+.asteroid_belt {
+  position: absolute;
+  top: 100%;
+  left: 100%; }
+  .asteroid_belt .slow {
+    width: 780px;
+    height: 780px;
+    position: absolute;
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    animation: 50s linear infinite spin; }
+  .asteroid_belt .medium {
+    width: 780px;
+    height: 780px;
+    position: absolute;
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    animation: 80s linear infinite spin; }
+  .asteroid_belt .fast {
+    width: 780px;
+    height: 780px;
+    position: absolute;
+    transform-origin: top left;
+    transform: translate(-50%, -50%);
+    animation: 100s linear infinite spin; }
+
 body {
   margin: 0;
   padding: 0; }
@@ -342,6 +368,11 @@ body {
   transform: translate(-50%, -50%);
   background: radial-gradient(#ffd000 1%, #f9b700 39%, #f9b700 39%, #e06317 100%);
   box-shadow: 0 0 12px 2px rgba(255, 70, 0, 0.4), 0 0 40px 20px rgba(255, 107, 0, 0.4), 0 0 20px 50px rgba(255, 203, 0, 0.13); }
+
+.asteroid {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white; }
 
 .line {
   width: 1px;

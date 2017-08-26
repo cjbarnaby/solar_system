@@ -92,6 +92,25 @@ $bodies: (
   )
 );
 
+$asteroids: (
+  "asteroid_belt": (
+    "inner_orbit": "mars",
+    "outer_orbit": "jupiter",
+    "groups": (
+      "slow": (
+        "speed": 50
+      ),
+      "medium": (
+        "speed": 80
+      ),
+      "fast": (
+        "speed": 100
+      )
+    )
+  )
+);
+
+
 @function days_per_orbit($body) {
   // Returns earth days per orbit. Used to calculate orbit animation
   @return map-get(map-get($bodies, $body), "days_per_year") * $time_multiplier;
@@ -170,6 +189,46 @@ $bodies: (
   }
 }
 
+@each $belt, $data in $asteroids {
+  .#{$belt} {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    @each $group, $group_data in map-get(map-get($asteroids, $belt), "groups") {
+      .#{$group} {
+        width: orbit_radius(map-get(map-get($asteroids, $belt), "outer_orbit"));
+        height: orbit_radius(map-get(map-get($asteroids, $belt), "outer_orbit"));
+        position: absolute;
+        transform-origin: top left;
+        transform: translate(-50%, -50%);
+        animation: #{map-get(map-get(map-get(map-get($asteroids, $belt), "groups"), $group), "speed") + "s"} linear infinite spin;
+      }
+    }
+  }
+}
+
+
+// $asteroids: (
+//   "asteroid_belt": (
+//     "inner_orbit": "mars",
+//     "outer_orbit": "jupiter",
+//     "groups": (
+//       "slow": (
+//         "number": 30,
+//         "speed": 50
+//       ),
+//       "medium": (
+//         "number": 20,
+//         "speed": 80
+//       ),
+//       "high": (
+//         "number": 10,
+//         "speed": 100
+//       )
+//     )
+//   )
+// );
+
 
 body {
   margin: 0;
@@ -203,7 +262,11 @@ body {
   background: radial-gradient(#ffd000 1%, #f9b700 39%, #f9b700 39%, #e06317 100%);
   box-shadow: 0 0 12px 2px rgba(255, 70, 0, 0.4), 0 0 40px 20px rgba(255, 107, 0, 0.4), 0 0 20px 50px rgba(255, 203, 0, 0.13);
 }
-
+.asteroid {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+}
 .line {
   width: 1px;
   height: 50%;
