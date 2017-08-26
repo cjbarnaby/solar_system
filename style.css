@@ -340,13 +340,13 @@ body {
   margin: 0;
   padding: 0; }
 
-.container {
+.background {
   width: 100vw;
   height: 100vh;
+  position: fixed;
   background-color: black; }
 
 .system {
-  background-color: black;
   width: 15800px;
   height: 15800px;
   border-radius: 50%;

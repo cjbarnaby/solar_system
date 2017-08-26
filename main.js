@@ -72,13 +72,36 @@ document.addEventListener("DOMContentLoaded", function() {
     return [x,y];
   };
 
-  var getSize = function() {
-    return Math.ceil(Math.random() * 2);
+  var getSize = function(maxPixels) {
+    return Math.ceil(Math.random() * maxPixels);
   };
 
-  var getOpacity = function() {
-    return Math.random();
+  var getOpacity = function(multiplier) {
+    multiplier = multiplier || 1;
+    return Math.random() * multiplier;
   };
+
+  var plotStars = function(number) {
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var height = window.innerHeight;
+    var group = document.querySelector(".background");
+    for (var i = 0; i < number; i++) {
+      var star = document.createElement("div");
+      star.className = "asteroid";
+      var coordinates = [Math.round(Math.random() * windowHeight), Math.round(Math.random() * windowWidth)];
+      var size = getSize(2);
+      var opacity = getOpacity(0.5);
+      star.style.top = coordinates[0] + "px";
+      star.style.left = coordinates[1] + "px";
+      star.style.width = size + "px";
+      star.style.height = size + "px";
+      star.style.opacity = opacity;
+      group.appendChild(star);
+    }
+  };
+
+  plotStars(1000);
 
   var plotAsteroids = function(obj, element, innerOrbit, outerOrbit) {
     var name = Object.keys(obj)[0];
@@ -93,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var asteroid = document.createElement("div");
       asteroid.className = "asteroid";
       var coordinates = getCoordinates(outerOrbitWidth, innerOrbitWidth);
-      var size = getSize();
+      var size = getSize(3);
       var opacity = getOpacity();
       asteroid.style.top = coordinates[0] + "px";
       asteroid.style.left = coordinates[1] + "px";

@@ -1,4 +1,4 @@
-// TODO: SUN'S RADII, ETC, ARE HARDCODED AT THIS POINT (DUE TO SIZE IF DONE RELATIVE TO EARTH RADIUS). 
+// TODO: SUN'S RADII, ETC, ARE HARDCODED AT THIS POINT (DUE TO SIZE IF DONE RELATIVE TO EARTH RADIUS).
 
 $earth_radius: 20px;
 // AU ALTERNATIVES:
@@ -239,14 +239,14 @@ body {
   margin: 0;
   padding: 0;
 }
-.container {
+.background {
   width: 100vw;
   height: 100vh;
+  position: fixed;
   background-color: black;
 }
 
 .system {
-  background-color: black;
   width: $astronomical_unit * 79;
   height: $astronomical_unit * 79;
   border-radius: 50%;
