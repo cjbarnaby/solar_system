@@ -64,10 +64,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var r2Squared = Math.pow(r2, 2);
     var theta = Math.round(360 * Math.random());
 
-    var distance = Math.sqrt(Math.random()*(r1Squared - r2Squared) + r2Squared);
+    var distance = Math.sqrt(Math.random()*(r1Squared - r2Squared) + r2Squared) / 2;
 
-    var x = Math.round(distance * Math.cos(theta)) / 2;
-    var y = Math.round(distance * Math.sin(theta)) / 2;
+    var x = Math.round(distance * Math.cos(theta));
+    var y = Math.round(distance * Math.sin(theta));
 
     return [x,y];
   };
@@ -80,46 +80,63 @@ document.addEventListener("DOMContentLoaded", function() {
     return Math.random();
   };
 
-  var plotAsteroids = function(obj) {
+  var plotAsteroids = function(obj, element, innerOrbit, outerOrbit) {
     var name = Object.keys(obj)[0];
     var number = obj[name];
-    var field = document.querySelector(".asteroid_belt");
+    var field = document.querySelector(element);
     var group = document.createElement("div");
     group.className = name;
+    innerOrbitWidth = window.getComputedStyle(document.querySelector("." + innerOrbit)).width.slice(0, -2);
+    outerOrbitWidth = window.getComputedStyle(document.querySelector("." + outerOrbit)).width.slice(0, -2);
 
     for (var i = 0; i < number; i++) {
-      var dot = document.createElement("div");
-      dot.className = "asteroid";
-      var coordinates = getCoordinates(500, 300);
+      var asteroid = document.createElement("div");
+      asteroid.className = "asteroid";
+      var coordinates = getCoordinates(outerOrbitWidth, innerOrbitWidth);
       var size = getSize();
       var opacity = getOpacity();
-      dot.style.top = coordinates[0] + "px";
-      dot.style.left = coordinates[1] + "px";
-      dot.style.width = size + "px";
-      dot.style.height = size + "px";
-      dot.style.opacity = opacity;
-      group.appendChild(dot);
+      asteroid.style.top = coordinates[0] + "px";
+      asteroid.style.left = coordinates[1] + "px";
+      asteroid.style.width = size + "px";
+      asteroid.style.height = size + "px";
+      asteroid.style.opacity = opacity;
+      group.appendChild(asteroid);
     }
     field.appendChild(group);
   };
 
-  var asteroidGroups = [
-    {
-      slow: 500
-    },
-    {
-      medium: 200
-    },
-    {
-      fast: 100
-    }
-  ];
-
-  var createAsteroids = function() {
-    for (var i = 0; i < asteroidGroups.length; i++) {
-      plotAsteroids(asteroidGroups[i]);
+  var asteroidFields = {
+    asteroidBelt: {
+      div: ".asteroid_belt",
+      outerOrbit: "jupiter",
+      innerOrbit: "mars",
+      groups: [
+        {
+          slow: 500
+        },
+        {
+          medium: 400
+        },
+        {
+          fast: 300
+        }
+      ]
     }
   };
 
-  createAsteroids();
+  var createAsteroidFields = function() {
+    for (var field in asteroidFields) {
+      createAsteroidGroups(asteroidFields[field]);
+    }
+  };
+
+  var createAsteroidGroups = function(field) {
+    for (var i = 0; i < field.groups.length; i++) {
+      var group =  field.groups[i];
+      plotAsteroids(group, field.div, field.innerOrbit, field.outerOrbit);
+    }
+  };
+
+
+  createAsteroidFields();
 });

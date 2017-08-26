@@ -98,13 +98,13 @@ $asteroids: (
     "outer_orbit": "jupiter",
     "groups": (
       "slow": (
-        "speed": 50
+        "duration": 200
       ),
       "medium": (
-        "speed": 80
+        "duration": 100
       ),
       "fast": (
-        "speed": 100
+        "duration": 50
       )
     )
   )
@@ -200,8 +200,7 @@ $asteroids: (
         height: orbit_radius(map-get(map-get($asteroids, $belt), "outer_orbit"));
         position: absolute;
         transform-origin: top left;
-        transform: translate(-50%, -50%);
-        animation: #{map-get(map-get(map-get(map-get($asteroids, $belt), "groups"), $group), "speed") + "s"} linear infinite spin;
+        animation: #{map-get(map-get(map-get(map-get($asteroids, $belt), "groups"), $group), "duration") + "s"} linear infinite spin;
       }
     }
   }

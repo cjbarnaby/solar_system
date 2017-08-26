@@ -322,22 +322,19 @@
     height: 780px;
     position: absolute;
     transform-origin: top left;
-    transform: translate(-50%, -50%);
-    animation: 50s linear infinite spin; }
+    animation: 200s linear infinite spin; }
   .asteroid_belt .medium {
     width: 780px;
     height: 780px;
     position: absolute;
     transform-origin: top left;
-    transform: translate(-50%, -50%);
-    animation: 80s linear infinite spin; }
+    animation: 100s linear infinite spin; }
   .asteroid_belt .fast {
     width: 780px;
     height: 780px;
     position: absolute;
     transform-origin: top left;
-    transform: translate(-50%, -50%);
-    animation: 100s linear infinite spin; }
+    animation: 50s linear infinite spin; }
 
 body {
   margin: 0;
