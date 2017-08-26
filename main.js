@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
       star.className = "asteroid";
       var coordinates = [Math.round(Math.random() * windowHeight), Math.round(Math.random() * windowWidth)];
       var size = getSize(2);
-      var opacity = getOpacity(0.5);
+      var opacity = getOpacity(0.4);
       star.style.top = coordinates[0] + "px";
       star.style.left = coordinates[1] + "px";
       star.style.width = size + "px";
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var asteroid = document.createElement("div");
       asteroid.className = "asteroid";
       var coordinates = getCoordinates(outerOrbitWidth, innerOrbitWidth);
-      var size = getSize(3);
+      var size = getSize(2);
       var opacity = getOpacity();
       asteroid.style.top = coordinates[0] + "px";
       asteroid.style.left = coordinates[1] + "px";
@@ -138,10 +138,26 @@ document.addEventListener("DOMContentLoaded", function() {
           slow: 500
         },
         {
-          medium: 200
+          medium: 250
         },
         {
-          fast: 100
+          fast: 125
+        }
+      ]
+    },
+    kuiperBelt: {
+      div: ".kuiper_belt",
+      outerOrbit: "system",
+      innerOrbit: "neptune",
+      groups: [
+        {
+          slow: 1000
+        },
+        {
+          medium: 5000
+        },
+        {
+          fast: 250
         }
       ]
     }

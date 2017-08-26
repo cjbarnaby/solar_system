@@ -336,6 +336,29 @@
     transform-origin: top left;
     animation: 50s linear infinite spin; }
 
+.kuiper_belt {
+  position: absolute;
+  top: 100%;
+  left: 100%; }
+  .kuiper_belt .slow {
+    width: 7900px;
+    height: 7900px;
+    position: absolute;
+    transform-origin: top left;
+    animation: 200s linear infinite spin; }
+  .kuiper_belt .medium {
+    width: 7900px;
+    height: 7900px;
+    position: absolute;
+    transform-origin: top left;
+    animation: 100s linear infinite spin; }
+  .kuiper_belt .fast {
+    width: 7900px;
+    height: 7900px;
+    position: absolute;
+    transform-origin: top left;
+    animation: 50s linear infinite spin; }
+
 body {
   margin: 0;
   padding: 0; }

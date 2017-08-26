@@ -113,6 +113,21 @@ $asteroids: (
         "duration": 50
       )
     )
+  ),
+  "kuiper_belt": (
+    "inner_orbit": "neptune",
+    "outer_orbit": "pluto",
+    "groups": (
+      "slow": (
+        "duration": 200
+      ),
+      "medium": (
+        "duration": 100
+      ),
+      "fast": (
+        "duration": 50
+      )
+    )
   )
 );
 
@@ -211,29 +226,6 @@ $asteroids: (
     }
   }
 }
-
-
-// $asteroids: (
-//   "asteroid_belt": (
-//     "inner_orbit": "mars",
-//     "outer_orbit": "jupiter",
-//     "groups": (
-//       "slow": (
-//         "number": 30,
-//         "speed": 50
-//       ),
-//       "medium": (
-//         "number": 20,
-//         "speed": 80
-//       ),
-//       "high": (
-//         "number": 10,
-//         "speed": 100
-//       )
-//     )
-//   )
-// );
-
 
 body {
   margin: 0;
