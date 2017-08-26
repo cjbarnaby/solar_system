@@ -3,31 +3,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 58.5px;
-  height: 58.5px; }
+  width: 78px;
+  height: 78px; }
   .mercury .planet {
     width: 7.6px;
     height: 7.6px;
-    animation: 5880ms linear infinite spin;
+    animation: 58800ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: gainsboro; }
   .mercury .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 8797ms linear infinite mercury-orbit;
-    top: 29.25px; }
+    animation: 87970ms linear infinite mercury-orbit;
+    top: 39px; }
 @keyframes mercury-orbit {
   from {
-    transform: rotate(0deg) translateX(29.25px) rotate(0deg); }
+    transform: rotate(0deg) translateX(39px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(29.25px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(39px) rotate(-360deg); } }
   .mercury .planet_shadow {
     width: 7.6px;
     height: 7.6px;
     box-shadow: inset -1.9px 0px 0px 0px;
     opacity: 0.5;
-    animation: 8797ms linear infinite mercury-shadow; }
+    animation: 87970ms linear infinite mercury-shadow; }
 @keyframes mercury-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -38,31 +38,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 108px;
-  height: 108px; }
+  width: 144px;
+  height: 144px; }
   .venus .planet {
     width: 19px;
     height: 19px;
-    animation: 24400ms linear infinite retrograde_spin;
+    animation: 244000ms linear infinite retrograde_spin;
     transform: translate(-50%, -50%);
     background-color: papayawhip; }
   .venus .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 22470ms linear infinite venus-orbit;
-    top: 54px; }
+    animation: 224700ms linear infinite venus-orbit;
+    top: 72px; }
 @keyframes venus-orbit {
   from {
-    transform: rotate(0deg) translateX(54px) rotate(0deg); }
+    transform: rotate(0deg) translateX(72px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(54px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(72px) rotate(-360deg); } }
   .venus .planet_shadow {
     width: 19px;
     height: 19px;
     box-shadow: inset -4.75px 0px 0px 0px;
     opacity: 0.5;
-    animation: 22470ms linear infinite venus-shadow; }
+    animation: 224700ms linear infinite venus-shadow; }
 @keyframes venus-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -73,31 +73,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 150px;
-  height: 150px; }
+  width: 200px;
+  height: 200px; }
   .earth .planet {
     width: 20px;
     height: 20px;
-    animation: 100ms linear infinite spin;
+    animation: 1000ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: deepskyblue; }
   .earth .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 36425ms linear infinite earth-orbit;
-    top: 75px; }
+    animation: 364250ms linear infinite earth-orbit;
+    top: 100px; }
 @keyframes earth-orbit {
   from {
-    transform: rotate(0deg) translateX(75px) rotate(0deg); }
+    transform: rotate(0deg) translateX(100px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(75px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(100px) rotate(-360deg); } }
   .earth .planet_shadow {
     width: 20px;
     height: 20px;
     box-shadow: inset -5px 0px 0px 0px;
     opacity: 0.5;
-    animation: 36425ms linear infinite earth-shadow; }
+    animation: 364250ms linear infinite earth-shadow; }
 @keyframes earth-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -108,31 +108,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 225px;
-  height: 225px; }
+  width: 300px;
+  height: 300px; }
   .mars .planet {
     width: 10.6px;
     height: 10.6px;
-    animation: 103ms linear infinite spin;
+    animation: 1030ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: firebrick; }
   .mars .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 68698ms linear infinite mars-orbit;
-    top: 112.5px; }
+    animation: 686980ms linear infinite mars-orbit;
+    top: 150px; }
 @keyframes mars-orbit {
   from {
-    transform: rotate(0deg) translateX(112.5px) rotate(0deg); }
+    transform: rotate(0deg) translateX(150px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(112.5px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(150px) rotate(-360deg); } }
   .mars .planet_shadow {
     width: 10.6px;
     height: 10.6px;
     box-shadow: inset -2.65px 0px 0px 0px;
     opacity: 0.5;
-    animation: 68698ms linear infinite mars-shadow; }
+    animation: 686980ms linear infinite mars-shadow; }
 @keyframes mars-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -143,31 +143,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 780px;
-  height: 780px; }
+  width: 1040px;
+  height: 1040px; }
   .jupiter .planet {
     width: 220px;
     height: 220px;
-    animation: 41.1ms linear infinite spin;
+    animation: 411ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: sandybrown; }
   .jupiter .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 433282ms linear infinite jupiter-orbit;
-    top: 390px; }
+    animation: 4332820ms linear infinite jupiter-orbit;
+    top: 520px; }
 @keyframes jupiter-orbit {
   from {
-    transform: rotate(0deg) translateX(390px) rotate(0deg); }
+    transform: rotate(0deg) translateX(520px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(390px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(520px) rotate(-360deg); } }
   .jupiter .planet_shadow {
     width: 220px;
     height: 220px;
     box-shadow: inset -55px 0px 0px 0px;
     opacity: 0.5;
-    animation: 433282ms linear infinite jupiter-shadow; }
+    animation: 4332820ms linear infinite jupiter-shadow; }
 @keyframes jupiter-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -178,31 +178,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1425px;
-  height: 1425px; }
+  width: 1900px;
+  height: 1900px; }
   .saturn .planet {
     width: 180px;
     height: 180px;
-    animation: 42.8ms linear infinite spin;
+    animation: 428ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: tan; }
   .saturn .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 1075570ms linear infinite saturn-orbit;
-    top: 712.5px; }
+    animation: 10755700ms linear infinite saturn-orbit;
+    top: 950px; }
 @keyframes saturn-orbit {
   from {
-    transform: rotate(0deg) translateX(712.5px) rotate(0deg); }
+    transform: rotate(0deg) translateX(950px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(712.5px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(950px) rotate(-360deg); } }
   .saturn .planet_shadow {
     width: 180px;
     height: 180px;
     box-shadow: inset -45px 0px 0px 0px;
     opacity: 0.5;
-    animation: 1075570ms linear infinite saturn-shadow; }
+    animation: 10755700ms linear infinite saturn-shadow; }
 @keyframes saturn-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -213,31 +213,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 2880px;
-  height: 2880px; }
+  width: 3840px;
+  height: 3840px; }
   .uranus .planet {
     width: 80px;
     height: 80px;
-    animation: 74.8ms linear infinite retrograde_spin;
+    animation: 748ms linear infinite retrograde_spin;
     transform: translate(-50%, -50%);
     background-color: powderblue; }
   .uranus .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 3068715ms linear infinite uranus-orbit;
-    top: 1440px; }
+    animation: 30687150ms linear infinite uranus-orbit;
+    top: 1920px; }
 @keyframes uranus-orbit {
   from {
-    transform: rotate(0deg) translateX(1440px) rotate(0deg); }
+    transform: rotate(0deg) translateX(1920px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(1440px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(1920px) rotate(-360deg); } }
   .uranus .planet_shadow {
     width: 80px;
     height: 80px;
     box-shadow: inset -20px 0px 0px 0px;
     opacity: 0.5;
-    animation: 3068715ms linear infinite uranus-shadow; }
+    animation: 30687150ms linear infinite uranus-shadow; }
 @keyframes uranus-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -248,31 +248,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 4515px;
-  height: 4515px; }
+  width: 6020px;
+  height: 6020px; }
   .neptune .planet {
     width: 80px;
     height: 80px;
-    animation: 80.2ms linear infinite spin;
+    animation: 802ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: royalblue; }
   .neptune .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 6019003ms linear infinite neptune-orbit;
-    top: 2257.5px; }
+    animation: 60190030ms linear infinite neptune-orbit;
+    top: 3010px; }
 @keyframes neptune-orbit {
   from {
-    transform: rotate(0deg) translateX(2257.5px) rotate(0deg); }
+    transform: rotate(0deg) translateX(3010px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(2257.5px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(3010px) rotate(-360deg); } }
   .neptune .planet_shadow {
     width: 80px;
     height: 80px;
     box-shadow: inset -20px 0px 0px 0px;
     opacity: 0.5;
-    animation: 6019003ms linear infinite neptune-shadow; }
+    animation: 60190030ms linear infinite neptune-shadow; }
 @keyframes neptune-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -283,31 +283,31 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 5925px;
-  height: 5925px; }
+  width: 7900px;
+  height: 7900px; }
   .pluto .planet {
     width: 3.6px;
     height: 3.6px;
-    animation: 26.7ms linear infinite spin;
+    animation: 267ms linear infinite spin;
     transform: translate(-50%, -50%);
     background-color: tan; }
   .pluto .planet_container {
     height: 100%;
     width: 100%;
     position: absolute;
-    animation: 9055300ms linear infinite pluto-orbit;
-    top: 2962.5px; }
+    animation: 90553000ms linear infinite pluto-orbit;
+    top: 3950px; }
 @keyframes pluto-orbit {
   from {
-    transform: rotate(0deg) translateX(2962.5px) rotate(0deg); }
+    transform: rotate(0deg) translateX(3950px) rotate(0deg); }
   to {
-    transform: rotate(360deg) translateX(2962.5px) rotate(-360deg); } }
+    transform: rotate(360deg) translateX(3950px) rotate(-360deg); } }
   .pluto .planet_shadow {
     width: 3.6px;
     height: 3.6px;
     box-shadow: inset -0.9px 0px 0px 0px;
     opacity: 0.5;
-    animation: 9055300ms linear infinite pluto-shadow; }
+    animation: 90553000ms linear infinite pluto-shadow; }
 @keyframes pluto-shadow {
   from {
     transform: translate(-50%, -50%) rotate(0deg); }
@@ -318,20 +318,20 @@
   top: 100%;
   left: 100%; }
   .asteroid_belt .slow {
-    width: 780px;
-    height: 780px;
+    width: 1040px;
+    height: 1040px;
     position: absolute;
     transform-origin: top left;
     animation: 200s linear infinite spin; }
   .asteroid_belt .medium {
-    width: 780px;
-    height: 780px;
+    width: 1040px;
+    height: 1040px;
     position: absolute;
     transform-origin: top left;
     animation: 100s linear infinite spin; }
   .asteroid_belt .fast {
-    width: 780px;
-    height: 780px;
+    width: 1040px;
+    height: 1040px;
     position: absolute;
     transform-origin: top left;
     animation: 50s linear infinite spin; }
@@ -347,8 +347,8 @@ body {
 
 .system {
   background-color: black;
-  width: 11850px;
-  height: 11850px;
+  width: 15800px;
+  height: 15800px;
   border-radius: 50%;
   position: absolute;
   top: 50%;

@@ -1,12 +1,18 @@
+// TODO: SUN'S RADII, ETC, ARE HARDCODED AT THIS POINT (DUE TO SIZE IF DONE RELATIVE TO EARTH RADIUS). 
+
 $earth_radius: 20px;
-$astronomical_unit: 150px;  // distance from sun to earth (AU)
-$time_multiplier: 100ms; // time per earth day
+// AU ALTERNATIVES:
+  // ACTUAL, RELATIVE TO EARTH RADIANS:
+    // $astronomical_unit: $earth_radius * 23481.0;
+  // REDUCED BY OVER 2000% FOR DISPLAY PURPOSES:
+    $astronomical_unit: 200px;  // distance from sun to earth (AU)
+$time_multiplier: 1000ms; // time per earth day
 $retrograde_orbits: "venus", "uranus";
 
 $bodies: (
   "sun": (
-    "radius": 109.00,
-    "rotation_period": 27.00,
+    "radius": 109.00,          // radius of body (in earth radii).
+    "rotation_period": 27.00,  // time taken to complete one revolution around own axis (in earth days)
     "rotation": "prograde"
   ),
   "mercury": (

@@ -115,10 +115,10 @@ document.addEventListener("DOMContentLoaded", function() {
           slow: 500
         },
         {
-          medium: 400
+          medium: 200
         },
         {
-          fast: 300
+          fast: 100
         }
       ]
     }
